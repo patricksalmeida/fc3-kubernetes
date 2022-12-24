@@ -8,5 +8,6 @@ spec:
   type: ClusterIP # by default we have: ClusterIP, NodePort, LoadBalancer and Headless
   ports:
     - name: goserver-service
-      port: 80 # server.go and docker exported port
+      port: 80 # service port
+      targetPort: 8000 # server.go and docker exported port
       protocol: TCP
