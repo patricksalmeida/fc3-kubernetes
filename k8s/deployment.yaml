@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: goserver
+  labels:
+    app: goserver
+spec:
+  selector: # created to filter pods with specific labels
+    matchLabels:
+      app: goserver
+  replicas: 10
+  template: # template of pods that will be created with this replicaset (same content of pod.yaml)
+    metadata:
+      name: "goserver"
+      labels:
+        app: "goserver"
+    spec:
+      containers:
+        - name: goserver
+          image: "patricksalmeida/hello-go:v2" 
