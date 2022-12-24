@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: goserver-service
+spec:
+  selector:
+    app: goserver
+  type: ClusterIP # by default we have: ClusterIP, NodePort, LoadBalancer and Headless
+  ports:
+    - name: goserver-service
+      port: 80 # server.go and docker exported port
+      protocol: TCP
