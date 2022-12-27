@@ -17,7 +17,18 @@ spec:
     spec:
       containers:
         - name: goserver
-          image: "patricksalmeida/hello-go:v4"
+          image: "patricksalmeida/hello-go:v5"
           envFrom:
             - configMapRef:
                 name: goserver-env
+          volumeMounts:
+            - mountPath: "/go/myfamily"
+              name: config
+              readOnly: true # seta o permissionamento do arquivo como somente leitura para evitar modificações
+      volumes:
+        - name: config
+          configMap:
+            name: configmap-family
+            items:
+              - key: members
+                path: "family.txt"
