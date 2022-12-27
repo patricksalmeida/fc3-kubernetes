@@ -8,7 +8,7 @@ spec:
   selector: # created to filter pods with specific labels
     matchLabels:
       app: goserver
-  replicas: 10
+  replicas: 1
   template: # template of pods that will be created with this replicaset (same content of pod.yaml)
     metadata:
       name: "goserver"
@@ -17,4 +17,9 @@ spec:
     spec:
       containers:
         - name: goserver
-          image: "patricksalmeida/hello-go:v3" 
+          image: "patricksalmeida/hello-go:v4"
+          env:
+            - name: NAME
+              value: "Patrick"
+            - name: AGE
+              value: "25"
