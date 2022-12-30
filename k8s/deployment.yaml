@@ -18,6 +18,13 @@ spec:
       containers:
         - name: goserver
           image: "patricksalmeida/hello-go:v5.5"
+          resources:
+            requests: # quanto meu app exige minimamente para rodar
+              cpu: 100m # processamento em vCPUs: 1vCPU = 1000 milicores
+              memory: 20Mi # memória em megabytes
+            limits:
+              cpu: 500m
+              memory: 25Mi
           startupProbe: 
             httpGet:
               path: /healthz
