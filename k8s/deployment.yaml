@@ -17,15 +17,22 @@ spec:
     spec:
       containers:
         - name: goserver
-          image: "patricksalmeida/hello-go:v5.3"
-          livenessProbe:
+          image: "patricksalmeida/hello-go:v5.4"
+          readinessProbe:
             httpGet:
               path: /healthz
               port: 8000
-            periodSeconds: 5 # periodo entre os health checks
-            failureThreshold: 3 # numero maximo de falhas para recriar o pod
-            timeoutSeconds: 1 # tempo limite de timeout do health check
-            successThreshold: 1 # quantidad de sucessos para considerar a aplicação saudavel
+            periodSeconds: 3 # periodo entre os health checks
+            failureThreshold: 1 # numero maximo de falhas para recriar o pod
+            initialDelaySeconds: 10
+          # livenessProbe:
+          #   httpGet:
+          #     path: /healthz
+          #     port: 8000
+          #   periodSeconds: 5 # periodo entre os health checks
+          #   failureThreshold: 3 # numero maximo de falhas para recriar o pod
+          #   timeoutSeconds: 1 # tempo limite de timeout do health check
+          #   successThreshold: 1 # quantidad de sucessos para considerar a aplicação saudavel
           envFrom:
             - configMapRef:
                 name: goserver-env
