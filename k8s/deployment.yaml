@@ -5,11 +5,11 @@ metadata:
   labels:
     app: goserver
 spec:
-  selector: # created to filter pods with specific labels
+  selector: 
     matchLabels:
       app: goserver
   replicas: 1
-  template: # template of pods that will be created with this replicaset (same content of pod.yaml)
+  template: 
     metadata:
       name: "goserver"
       labels:
@@ -18,28 +18,28 @@ spec:
       containers:
         - name: goserver
           image: "patricksalmeida/hello-go:v5.5"
-          startupProbe: # probe que valida o health inicial, liberando o readiness/liveness
+          startupProbe: 
             httpGet:
               path: /healthz
               port: 8000
-            periodSeconds: 3 # periodo entre os health checks
-            failureThreshold: 30 # numero maximo de falhas para recriar o pod
+            periodSeconds: 3 
+            failureThreshold: 30 
           readinessProbe:
             httpGet:
               path: /healthz
               port: 8000
-            periodSeconds: 3 # periodo entre os health checks
-            failureThreshold: 1 # numero maximo de falhas para recriar o pod
-            initialDelaySeconds: 10 # periodo pra inicio das verificações de saúde
+            periodSeconds: 3 
+            failureThreshold: 1 
+            initialDelaySeconds: 10 
           livenessProbe:
             httpGet:
               path: /healthz
               port: 8000
-            periodSeconds: 5 # periodo entre os health checks
-            failureThreshold: 3 # numero maximo de falhas para recriar o pod
-            timeoutSeconds: 1 # tempo limite de timeout do health check
-            successThreshold: 1 # quantidad de sucessos para considerar a aplicação saudavel
-            initialDelaySeconds: 15 # periodo pra inicio das verificações de saúde
+            periodSeconds: 5 
+            failureThreshold: 3 
+            timeoutSeconds: 1 
+            successThreshold: 1 
+            initialDelaySeconds: 15 
           envFrom:
             - configMapRef:
                 name: goserver-env
@@ -48,7 +48,7 @@ spec:
           volumeMounts:
             - mountPath: "/go/myfamily"
               name: config
-              readOnly: true # seta o permissionamento do arquivo como somente leitura para evitar modificações
+              readOnly: true 
       volumes:
         - name: config
           configMap:
