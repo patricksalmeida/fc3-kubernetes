@@ -19,11 +19,11 @@ spec:
         - name: goserver
           image: "patricksalmeida/hello-go:v5.6"
           resources:
-            requests: # quanto meu app exige minimamente para rodar
-              cpu: 100m # processamento em vCPUs: 1vCPU = 1000 milicores
-              memory: 20Mi # memória em megabytes
+            requests:
+              cpu: "0.05"
+              memory: 20Mi
             limits:
-              cpu: 500m
+              cpu: "0.05"
               memory: 25Mi
           startupProbe: 
             httpGet:
