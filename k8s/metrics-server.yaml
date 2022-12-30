@@ -138,6 +138,7 @@ spec:
         - --kubelet-use-node-status-port
         - --metric-resolution=15s
         - --kubelet-insecure-tls
+        # the --kubelet-insecure-tls argument was added to run metrics server locally
         image: k8s.gcr.io/metrics-server/metrics-server:v0.6.2
         imagePullPolicy: IfNotPresent
         livenessProbe:
