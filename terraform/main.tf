@@ -67,7 +67,7 @@ module "gke" {
   node_pools = [
     {
       name                      = "node-pool"
-      machine_type              = "e2-micro"
+      machine_type              = "e2-medium"
       node_locations            = "us-west1-b"
       min_count                 = 1
       max_count                 = 2
