@@ -1,24 +1,36 @@
-variable "prefix" {
-  type = string
-  description = "Default prefix"
+variable "project_id" {
+  description = "The project ID to host the cluster in"
+  default = "fullcycle-project"
 }
-
-variable "gcp_credentials" {
-  type = string
-  description = "Path to service account for GCP"
+variable "cluster_name" {
+  description = "The name for the GKE cluster"
+  default     = "fullcycle-cluster"
 }
-
-variable "gcp_project_id" {
-  type = string
-  description = "GCP project id"
+variable "env_name" {
+  description = "The environment for the GKE cluster"
+  default     = "prod"
 }
-
-variable "gcp_region" {
-  type = string
-  description = "GCP region"
+variable "region" {
+  description = "The region to host the cluster in"
+  default     = "us-west1"
 }
-
-variable "gcp_region_zone" {
-  type = string
-  description = "GCP region zone"
+variable "region_zone" {
+  description = "The region zone to host the cluster in"
+  default     = "us-west1-c"
+}
+variable "network" {
+  description = "The VPC network created to host the cluster in"
+  default     = "fullcycle-network"
+}
+variable "subnetwork" {
+  description = "The subnetwork created to host the cluster in"
+  default     = "fullcycle-subnet"
+}
+variable "ip_range_pods_name" {
+  description = "The secondary ip range to use for pods"
+  default     = "fullcycle-ip-range-pods"
+}
+variable "ip_range_services_name" {
+  description = "The secondary ip range to use for services"
+  default     = "fullcycle-ip-range-services"
 }
