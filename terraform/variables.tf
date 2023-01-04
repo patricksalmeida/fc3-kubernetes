@@ -16,7 +16,7 @@ variable "region" {
 }
 variable "region_zone" {
   description = "The region zone to host the cluster in"
-  default     = "us-west1-c"
+  default     = "us-west1-b"
 }
 variable "network" {
   description = "The VPC network created to host the cluster in"
