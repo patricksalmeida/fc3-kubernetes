@@ -30,7 +30,7 @@ datadog:
   # datadog.apiKey -- Your Datadog API key
 
   ## ref: https://app.datadoghq.com/account/settings#agent/kubernetes
-  apiKey:  a7c14c1ca813e7a8db8a0a119f6ab337
+  apiKey:  <DD_API_KEY>
 
   # datadog.apiKeyExistingSecret -- Use existing Secret which stores API key instead of creating a new one. The value should be set with the `api-key` key inside the secret.
 
@@ -736,8 +736,8 @@ datadog:
   # datadog.ignoreAutoConfig -- List of integration to ignore auto_conf.yaml.
 
   ## ref: https://docs.datadoghq.com/agent/faq/auto_conf/
-  ignoreAutoConfig: []
-  #  - redisdb
+  ignoreAutoConfig:
+    - redisdb
   #  - kubernetes_state
 
   # datadog.containerExclude -- Exclude containers from the Agent
