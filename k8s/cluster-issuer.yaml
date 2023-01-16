@@ -1,14 +1,14 @@
 apiVersion: cert-manager.io/v1
 kind: Issuer
 metadata:
-  name: letsencrypt-secret
+  name: letsencrypt
 spec:
   acme:
-    server: https://acme-staging-v02.api.letsencrypt.org/directory
+    server: https://acme-v02.api.letsencrypt.org/directory
     email: contato@patrickalmeida.com
     privateKeySecretRef:
       name: letsencrypt-tls
     solvers:
     - http01:
         ingress:
-          name: ingress-host
+          class: nginx

@@ -3,10 +3,7 @@ kind: Ingress
 metadata:
   name: ingress-host
   annotations:
-    kubernetes.io/ingress.class: "nginx"
-    kubernetes.io/ingress.allow-http: "true"
-    kubernetes.io/ingress.global-static-ip-name: web-ip
-    cert-manager.io/issuer: letsencrypt
+    cert-manager.io/issuer: "letsencrypt"
     ingress.kubernetes.io/force-ssl-redirect: "true"
 spec:
   ingressClassName: nginx
@@ -22,6 +19,6 @@ spec:
                   number: 80
             path: /
   tls:
-    - secretName: letsencrypt-secret
-      hosts:
+    - hosts:
         - ingress.patrickalmeida.com
+      secretName: ingress-tls
