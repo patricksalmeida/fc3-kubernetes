@@ -2,7 +2,9 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: ingress-host
-  namespace: default
+  annotations:
+    cert-manager.io/issuer: "letsencrypt"
+    ingress.kubernetes.io/force-ssl-redirect: "true"
 spec:
   ingressClassName: nginx
   rules:
@@ -16,3 +18,7 @@ spec:
                 port: 
                   number: 80
             path: /
+  tls:
+    - hosts:
+        - ingress.patrickalmeida.com
+      secretName: ingress-tls
